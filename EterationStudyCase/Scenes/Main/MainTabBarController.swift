@@ -1,19 +1,18 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  EterationStudyCase
 //
-//  Created by Teyhan Uslu on 13.07.2024.
+//  Created by Teyhan Uslu on 15.07.2024.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
-
-
+    
 }
-
