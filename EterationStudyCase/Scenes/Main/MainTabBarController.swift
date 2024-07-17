@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  MainTabBarController.swift
 //  EterationStudyCase
 //
 //  Created by Teyhan Uslu on 15.07.2024.
@@ -7,12 +7,30 @@
 
 import UIKit
 
-class MainViewController: UITabBarController {
+class MainTabBarController: UITabBarController, StoryboardLoadable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTabBar()
+    }
 
-        // Do any additional setup after loading the view.
+    private func setupTabBar() {
+        
+        let productViewController = UIStoryboard.loadViewController() as ProductsViewController
+        productViewController.viewModel = ProductsViewModel(view: productViewController)
+        let productNavBar = UINavigationController(rootViewController: productViewController)
+        productNavBar.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
+        
+        
+        let cartViewController = UIStoryboard.loadViewController() as CartViewController
+        cartViewController.viewModel = CartViewModel(view: cartViewController)
+        
+        let cartNavBar = UINavigationController(rootViewController: cartViewController)
+        
+        cartNavBar.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "basket_icon"), selectedImage: UIImage(named: "basket_icon"))
+        
+        
+        viewControllers = [productNavBar, cartNavBar]
     }
     
 }
