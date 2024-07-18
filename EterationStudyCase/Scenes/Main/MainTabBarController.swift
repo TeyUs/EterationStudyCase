@@ -21,14 +21,10 @@ class MainTabBarController: UITabBarController, StoryboardLoadable {
         let productNavBar = UINavigationController(rootViewController: productViewController)
         productNavBar.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
         
-        
         let cartViewController = UIStoryboard.loadViewController() as CartViewController
         cartViewController.viewModel = CartViewModel(view: cartViewController)
-        
         let cartNavBar = UINavigationController(rootViewController: cartViewController)
-        
-        cartNavBar.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "basket_icon"), selectedImage: UIImage(named: "basket_icon"))
-        
+        cartNavBar.tabBarItem = UITabBarItem(title: "", image: .basketIcon, selectedImage: .basketIcon)
         
         viewControllers = [productNavBar, cartNavBar]
     }

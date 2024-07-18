@@ -11,21 +11,36 @@ class ProductsViewController: UIViewController, StoryboardLoadable {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
     
+    var filterText: String = ""
     var viewModel: ProductsViewModelProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationItem.title = "E-Market"
-
+        
+        searchBar.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
+        
         
         let nib = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
         
         viewModel?.viewDidLoad()
+    }
+    
+    @IBAction func selectFilter(_ sender: Any) {
+        viewModel?.selectFilterTapped()
+        let filterViewController = UIStoryboard.loadViewController() as FilterViewController
+        let viewModel = FilterViewModel(view: filterViewController)
+        viewModel.didDismiss = { [weak self] in
+            self?.viewModel?.filterPageDissmissed()
+        }
+        filterViewController.viewModel = viewModel
+        present(filterViewController, animated: true)
     }
 }
 
@@ -35,6 +50,13 @@ extension ProductsViewController: ProductsViewProtocol {
         collectionView.reloadData()
     }
 }
+
+extension ProductsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel?.searchBarTextDidChange(searchText)
+    }
+}
+
 
 extension ProductsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

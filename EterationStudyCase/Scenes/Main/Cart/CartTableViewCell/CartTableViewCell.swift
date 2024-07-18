@@ -15,13 +15,6 @@ class CartTableViewCell: UITableViewCell {
     var product: Product?
     
     var numberOfProduct = 0 
-//    {
-////        didSet {
-////            numberLabel.text = "\(numberOfProduct)"
-////            guard let product else { return }
-////            CartManager.shared.updateNumber(of: product, newNumber: numberOfProduct)
-////        }
-//    }
     
     func setUI(product: Product) {
         self.product = product

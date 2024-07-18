@@ -64,6 +64,8 @@ class CartManager: NSObject, CartManagerProtocol {
             var product = product
             product.numberOfCart = newNumber
             cartProducts.update(with: product)
+        } else {
+            LocalDataManager.shared.deleteProduct(product: product)
         }
         updatedData()
     }

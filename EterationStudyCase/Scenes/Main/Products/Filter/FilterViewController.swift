@@ -7,23 +7,89 @@
 
 import UIKit
 
-class FilterViewController: UIViewController {
+class FilterViewController: UIViewController, StoryboardLoadable {
 
+    var viewModel: FilterViewModelProtocol?
+    
+    @IBOutlet var sortButtons: [UIButton]!
+    
+    @IBOutlet weak var brandTableView: UITableView!
+    @IBOutlet weak var modelTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        brandTableView.delegate = self
+        brandTableView.dataSource = self
+        
+        modelTableView.delegate = self
+        modelTableView.dataSource = self
+        
+        let nib = UINib(nibName: "FilterTableViewCell", bundle: nil)
+        brandTableView.register(nib, forCellReuseIdentifier: "FilterTableViewCell")
+        modelTableView.register(nib, forCellReuseIdentifier: "FilterTableViewCell")
+        
+        viewModel?.viewDidLoad()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillDisappear(_ animated: Bool) {
+        viewModel?.viewWillDisappear()
     }
-    */
+    
+    @IBAction func sortButtonsTapped(_ sender: UIButton) {
+        viewModel?.sortButtonsTapped(tag: sender.tag)
+        for button in sortButtons {
+            button.setImage(.checkboxEmpty, for: .normal)
+        }
+        let selectedBtn = sortButtons.first { $0.tag == sender.tag }
+        selectedBtn?.setImage(.checkboxFilled, for: .normal)
+    }
+    
+    @IBAction func finisFilterTapped(_ sender: Any) {
+        viewModel?.finisFilterTapped()
+        dismiss(animated: true)
+    }
+}
 
+extension FilterViewController: FilterViewControllerProtocol {
+    func reload() {
+        brandTableView.reloadData()
+        modelTableView.reloadData()
+    }
+}
+
+extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == brandTableView {
+            viewModel?.brand.itemsCount ?? 0
+        } else {
+            viewModel?.model.itemsCount ?? 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTableViewCell", for: indexPath) as! FilterTableViewCell
+        
+        var item: FilterModel? {
+            if tableView == brandTableView {
+                return viewModel?.brand.item(at: indexPath.row)
+            } else {
+                return viewModel?.model.item(at: indexPath.row)
+            }
+        }
+        if let item {
+            cell.setUI(name: item.name, isChecked: item.isChecked)
+            return cell
+            
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == brandTableView {
+            viewModel?.brand.selectedRow(at: indexPath.row)
+        } else {
+            viewModel?.model.selectedRow(at: indexPath.row)
+        }
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
 }

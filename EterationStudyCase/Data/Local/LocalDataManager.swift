@@ -16,15 +16,10 @@ class LocalDataManager {
     private init() {}
     
     func updateOrSaveProduct(product: Product) {
-        let request: NSFetchRequest<ProductEntity> = ProductEntity.fetchRequest()
-        
         guard let id = product.id else { return }
-        
         let idPredicate = NSPredicate(format: "id == %@", id)
-        request.predicate = idPredicate
-        
         do {
-            let result = try context.fetch(request)
+            let result = try fetchProductEntity(predicate: idPredicate)
             if let productEntity = result.first {
                 if productEntity.numberOfCart != Int32(product.numberOfCart ?? 0) {
                     productEntity.numberOfCart = Int32(product.numberOfCart ?? 0)
@@ -56,11 +51,24 @@ class LocalDataManager {
         }
     }
     
-    func loadProducts() -> [Product] {
-        let request: NSFetchRequest<ProductEntity> = ProductEntity.fetchRequest()
-        
+    func deleteProduct(product: Product) {
+        guard let id = product.id else { return }
+        let idPredicate = NSPredicate(format: "id == %@", id)
         do {
-            let result = try context.fetch(request)
+            let result = try fetchProductEntity(predicate: idPredicate)
+            if let productEntity = result.first {
+                context.delete(productEntity)
+                try context.save()
+                print("Data deleted")
+            }
+        } catch {
+            print("Failed delete: \(error)")
+        }
+    }
+    
+    func loadProducts() -> [Product] {
+        do {
+            let result = try fetchProductEntity()
             let products = result.compactMap { entity -> Product? in
                 guard let _ = entity.id else {
                     return nil
@@ -72,5 +80,12 @@ class LocalDataManager {
             print("Failed loading: \(error)")
             return []
         }
+    }
+    
+    func fetchProductEntity(predicate: NSPredicate? = nil) throws -> [ProductEntity] {
+        let request: NSFetchRequest<ProductEntity> = ProductEntity.fetchRequest()
+        request.predicate = predicate
+        let result = try context.fetch(request)
+        return result
     }
 }

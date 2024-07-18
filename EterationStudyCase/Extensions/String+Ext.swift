@@ -8,7 +8,6 @@
 import Foundation
 
 extension String {
-    
     var tl: String {
         return self + " ₺"
     }

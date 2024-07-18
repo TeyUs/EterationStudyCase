@@ -43,6 +43,9 @@
                                         <color key="tintColor" systemColor="darkTextColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Select Filter"/>
+                                        <connections>
+                                            <action selector="selectFilter:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7bB-oN-FZG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -83,6 +86,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="h3B-Hz-ovs" id="Oy0-p0-0CY"/>
+                        <outlet property="searchBar" destination="awL-mb-TOS" id="jqU-HP-dyb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

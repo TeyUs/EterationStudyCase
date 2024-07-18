@@ -56,7 +56,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         CartManager.shared.saveToLocal()
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
-
-
 }
 
