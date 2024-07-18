@@ -23,6 +23,10 @@ protocol CartViewControllerProtocol: AnyObject {
 class CartViewModel {
     var cartProducts: [Product] = []
     
+    lazy var cartManager: CartManagerProtocol = {
+        return CartManager.shared
+    }()
+    
     unowned var view: CartViewControllerProtocol
     
     init(view: CartViewControllerProtocol) {
@@ -30,15 +34,15 @@ class CartViewModel {
     }
     
     func getProductsOfCart() {
-        cartProducts = Array(CartManager.shared.cartProducts)
+        cartProducts = Array(cartManager.cartProducts)
     }
     
     func saveProductsOfCart() {
-        CartManager.shared.saveToLocal()
+        cartManager.saveToLocal()
     }
     
     func getTotalPrice() {
-        view.setTotalPrice("\(CartManager.shared.totalPrice).00".tl)
+        view.setTotalPrice("\(cartManager.totalPrice).00".tl)
     }
     
     func dataUpdated() {
@@ -52,7 +56,7 @@ class CartViewModel {
 
 extension CartViewModel: CartViewModelProtocol {
     func viewDidLoad() {
-        CartManager.shared.addSubscriber { [weak self] in
+        cartManager.addSubscriber { [weak self] in
             self?.dataUpdated()
         }
     }

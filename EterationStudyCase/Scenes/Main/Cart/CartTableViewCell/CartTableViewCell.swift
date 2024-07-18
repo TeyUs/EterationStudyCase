@@ -16,6 +16,10 @@ class CartTableViewCell: UITableViewCell {
     
     var numberOfProduct = 0 
     
+    lazy var cartManager: CartManagerProtocol = {
+        return CartManager.shared
+    }()
+    
     func setUI(product: Product) {
         self.product = product
         titleLabel.text = product.name
@@ -29,12 +33,12 @@ class CartTableViewCell: UITableViewCell {
             numberOfProduct -= 1
         }
         guard let product else { return }
-        CartManager.shared.updateNumber(of: product, newNumber: numberOfProduct)
+        cartManager.updateNumber(of: product, newNumber: numberOfProduct)
     }
     
     @IBAction func increaseTapped(_ sender: Any) {
         numberOfProduct += 1
         guard let product else { return }
-        CartManager.shared.updateNumber(of: product, newNumber: numberOfProduct)
+        cartManager.updateNumber(of: product, newNumber: numberOfProduct)
     }
 }

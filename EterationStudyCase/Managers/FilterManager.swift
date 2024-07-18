@@ -7,14 +7,18 @@
 
 import Foundation
 
-class FilterManager: NSObject {
+protocol FilterManagerProtocol {
+    var allData: [Product] { get set }
+    var brandSelected: Set<String>  { get set }
+    var modelSelected: Set<String>  { get set }
+}
+
+class FilterManager: NSObject, FilterManagerProtocol {
     internal static var shared = FilterManager()
     
     var allData: [Product] = []
     var brandSelected: Set<String> = []
     var modelSelected: Set<String> = []
-    
-    var filteredData: [Product] = []
     
     private override init() {
         super.init()

@@ -21,6 +21,11 @@ protocol ProductDetailViewProtocol: AnyObject {
 
 class ProductDetailViewModel {
     let model: Product
+    
+    lazy var cartManager: CartManagerProtocol = {
+        return CartManager.shared
+    }()
+    
     unowned var view: ProductDetailViewProtocol
     
     init(view: ProductDetailViewProtocol, model: Product) {
@@ -34,8 +39,6 @@ class ProductDetailViewModel {
         view.setDescription(model.description ?? "")
         view.setPrice(model.price ?? "")
     }
-    
-    
 }
 
 extension ProductDetailViewModel: ProductDetailViewModelProtocol {
@@ -44,7 +47,7 @@ extension ProductDetailViewModel: ProductDetailViewModelProtocol {
     }
     
     func addCartTapped() {
-        CartManager.shared.addProductToCart(model)
+        cartManager.addProductToCart(model)
     }
 }
     

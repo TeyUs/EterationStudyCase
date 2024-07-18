@@ -21,11 +21,10 @@ protocol ProductsViewProtocol: AnyObject {
 }
 
 class ProductsViewModel {
-    var allProducts: Products = []
-    
-    var filteredProducts: Products = []
-    
-    var searchedFilteredProducts: Products = [] {
+    let service: NetworkService
+    var allProducts: [Product] = []
+    var filteredProducts: [Product] = []
+    var searchedFilteredProducts: [Product] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.view.reload()
@@ -35,17 +34,21 @@ class ProductsViewModel {
     
     var searchText = ""
     
+    lazy var filterManager: FilterManagerProtocol = {
+        return FilterManager.shared
+    }()
+    
     unowned var view: ProductsViewProtocol
     
-    init(view: ProductsViewProtocol) {
+    init(view: ProductsViewProtocol, networkService: NetworkService = NetworkManager.shared) {
         self.view = view
+        self.service = networkService
     }
     
     func fetch() {
         Task {
             do {
-                let data: Products = try await NetworkManager.shared.get(urlString: "https://5fc9346b2af77700165ae514.mockapi.io/products")
-                print("Data received: \(data)")
+                let data: [Product] = try await service.get(urlString: "https://5fc9346b2af77700165ae514.mockapi.io/products")
                 allProducts = data
                 filterData()
             } catch {
@@ -56,7 +59,7 @@ class ProductsViewModel {
     
     func filterData() {
         var filteringList = allProducts
-        let filterManager = FilterManager.shared
+        let filterManager = filterManager
         if !filterManager.brandSelected.isEmpty {
             let selectedBrands = filterManager.brandSelected
             filteringList = filteringList.filter { product in
@@ -102,7 +105,7 @@ extension ProductsViewModel: ProductsViewModelProtocol {
     }
     
     func selectFilterTapped() {
-        FilterManager.shared.allData = allProducts
+        filterManager.allData = allProducts
     }
     
     var itemsCount: Int {

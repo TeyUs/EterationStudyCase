@@ -10,11 +10,8 @@ import UIKit
 class ProductDetailViewController: UIViewController, StoryboardLoadable {
 
     @IBOutlet weak var productImage: UIImageView!
-    
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var descriptionLabel: UILabel!
-    
     @IBOutlet weak var priceLabel: UILabel!
     
     var viewModel: ProductDetailViewModel?
@@ -25,15 +22,12 @@ class ProductDetailViewController: UIViewController, StoryboardLoadable {
     }
     
     @IBAction func favButtonTapped(_ sender: Any) {
-        
-        
+        //TODO: favorite button feature will be added
     }
-    
     
     @IBAction func AddCartTapped(_ sender: Any) {
         viewModel?.addCartTapped()
     }
-    
 }
 
 extension ProductDetailViewController: ProductDetailViewProtocol {

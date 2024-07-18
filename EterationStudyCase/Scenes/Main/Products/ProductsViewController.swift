@@ -10,10 +10,10 @@ import UIKit
 class ProductsViewController: UIViewController, StoryboardLoadable {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
     var filterText: String = ""
+    
     var viewModel: ProductsViewModelProtocol?
     
     override func viewDidLoad() {
@@ -24,7 +24,6 @@ class ProductsViewController: UIViewController, StoryboardLoadable {
         searchBar.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
-        
         
         let nib = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
@@ -56,7 +55,6 @@ extension ProductsViewController: UISearchBarDelegate {
         viewModel?.searchBarTextDidChange(searchText)
     }
 }
-
 
 extension ProductsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

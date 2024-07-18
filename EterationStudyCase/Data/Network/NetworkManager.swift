@@ -12,7 +12,7 @@ protocol NetworkService {
     func get<T: Decodable>(urlString: String) async throws -> T
 }
 
-class NetworkManager {
+class NetworkManager: NetworkService {
     
     static let shared = NetworkManager()
     

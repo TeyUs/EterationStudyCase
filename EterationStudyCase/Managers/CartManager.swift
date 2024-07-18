@@ -9,9 +9,16 @@ import Foundation
 import UIKit
 
 protocol CartManagerProtocol {
-    
+    func saveToLocal()
+    func loadFromLocal()
+    func updateNumber(of product: Product, newNumber: Int)
+    var totalPrice: Int { get }
+    var cartProducts: Set<Product> { get }
+    func addSubscriber(proccess: @escaping Process)
+    func addProductToCart(_ product: Product)
 }
 
+typealias Process = ()->()
 class CartManager: NSObject, CartManagerProtocol {
     internal static var shared = CartManager()
     
@@ -87,8 +94,6 @@ class CartManager: NSObject, CartManagerProtocol {
 
 
 extension CartManager {
-    typealias Process = ()->()
-    
     private func notifySubscribers() {
         subscribers.forEach {  $0() }
     }

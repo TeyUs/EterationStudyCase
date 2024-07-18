@@ -212,7 +212,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="brandSearchBar" destination="SBy-nl-mIn" id="m1b-7G-5tR"/>
                         <outlet property="brandTableView" destination="47R-9b-Xvr" id="z6p-ef-BFR"/>
+                        <outlet property="modelSearchBar" destination="R4j-MJ-Nyg" id="hO8-Wy-elY"/>
                         <outlet property="modelTableView" destination="qma-PF-CNT" id="NCc-Rg-F5W"/>
                         <outletCollection property="sortButtons" destination="V2y-6R-GJP" collectionClass="NSMutableArray" id="rVH-ak-mQz"/>
                         <outletCollection property="sortButtons" destination="7rj-8E-KOr" collectionClass="NSMutableArray" id="fxs-oW-c6k"/>

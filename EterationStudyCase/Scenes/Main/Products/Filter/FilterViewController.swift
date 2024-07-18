@@ -12,6 +12,8 @@ class FilterViewController: UIViewController, StoryboardLoadable {
     var viewModel: FilterViewModelProtocol?
     
     @IBOutlet var sortButtons: [UIButton]!
+    @IBOutlet weak var brandSearchBar: UISearchBar!
+    @IBOutlet weak var modelSearchBar: UISearchBar!
     
     @IBOutlet weak var brandTableView: UITableView!
     @IBOutlet weak var modelTableView: UITableView!
@@ -54,6 +56,20 @@ extension FilterViewController: FilterViewControllerProtocol {
     func reload() {
         brandTableView.reloadData()
         modelTableView.reloadData()
+    }
+}
+
+extension FilterViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar == brandSearchBar {
+            viewModel?.brand.searchBarTextDidChange(searchText) { [weak self] in
+                self?.brandTableView.reloadData()
+            }
+        } else {
+            viewModel?.model.searchBarTextDidChange(searchText) { [weak self] in
+                self?.modelTableView.reloadData()
+            }
+        }
     }
 }
 
