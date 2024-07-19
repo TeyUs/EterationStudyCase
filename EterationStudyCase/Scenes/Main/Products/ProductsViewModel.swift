@@ -26,9 +26,7 @@ class ProductsViewModel {
     var filteredProducts: [Product] = []
     var searchedFilteredProducts: [Product] = [] {
         didSet {
-            DispatchQueue.main.async {
-                self.view.reload()
-            }
+            self.view.reload()
         }
     }
     

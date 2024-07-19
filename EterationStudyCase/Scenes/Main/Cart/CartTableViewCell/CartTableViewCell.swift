@@ -21,11 +21,13 @@ class CartTableViewCell: UITableViewCell {
     }()
     
     func setUI(product: Product) {
-        self.product = product
-        titleLabel.text = product.name
-        priceLabel.text = product.price?.tl
-        numberOfProduct = product.numberOfCart ?? 0
-        numberLabel.text = "\(numberOfProduct)"
+        DispatchQueue.main.async { [weak self] in
+            self?.product = product
+            self?.titleLabel.text = product.name
+            self?.priceLabel.text = product.price?.tl
+            self?.numberOfProduct = product.numberOfCart ?? 0
+            self?.numberLabel.text = "\(self?.numberOfProduct ?? 0)"
+        }
     }
     
     @IBAction func decreaseTapped(_ sender: Any) {

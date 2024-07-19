@@ -44,9 +44,10 @@ class ProductsViewController: UIViewController, StoryboardLoadable {
 }
 
 extension ProductsViewController: ProductsViewProtocol {
-    @MainActor
     func reload() {
-        collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
 }
 

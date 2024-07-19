@@ -15,6 +15,9 @@
 		F31325EE2C483F3300659FE8 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31325EB2C483F3300659FE8 /* FilterTableViewCell.swift */; };
 		F31325F02C4855E400659FE8 /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31325EF2C4855E300659FE8 /* FilterModel.swift */; };
 		F31325F22C48EBD200659FE8 /* FilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31325F12C48EBD200659FE8 /* FilterManager.swift */; };
+		F31325F72C49C33E00659FE8 /* CartViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31325F62C49C33E00659FE8 /* CartViewModelTests.swift */; };
+		F31325F92C49C5BA00659FE8 /* MockCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31325F82C49C5BA00659FE8 /* MockCartViewController.swift */; };
+		F31325FB2C49C81500659FE8 /* MockCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31325FA2C49C81500659FE8 /* MockCartManager.swift */; };
 		F3BD696E2C428B7600BB8EA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BD696D2C428B7600BB8EA6 /* AppDelegate.swift */; };
 		F3BD69702C428B7600BB8EA6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BD696F2C428B7600BB8EA6 /* SceneDelegate.swift */; };
 		F3BD69782C428B7600BB8EA6 /* EterationStudyCase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3BD69762C428B7600BB8EA6 /* EterationStudyCase.xcdatamodeld */; };
@@ -76,6 +79,9 @@
 		F31325EC2C483F3300659FE8 /* FilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterTableViewCell.xib; sourceTree = "<group>"; };
 		F31325EF2C4855E300659FE8 /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		F31325F12C48EBD200659FE8 /* FilterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterManager.swift; sourceTree = "<group>"; };
+		F31325F62C49C33E00659FE8 /* CartViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModelTests.swift; sourceTree = "<group>"; };
+		F31325F82C49C5BA00659FE8 /* MockCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCartViewController.swift; sourceTree = "<group>"; };
+		F31325FA2C49C81500659FE8 /* MockCartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCartManager.swift; sourceTree = "<group>"; };
 		F3BD696A2C428B7600BB8EA6 /* EterationStudyCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EterationStudyCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3BD696D2C428B7600BB8EA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3BD696F2C428B7600BB8EA6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +183,32 @@
 			path = FilterTableViewCell;
 			sourceTree = "<group>";
 		};
+		F31325F32C49C2FD00659FE8 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				F31325F42C49C30500659FE8 /* Main */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		F31325F42C49C30500659FE8 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F31325F52C49C31F00659FE8 /* Cart */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F31325F52C49C31F00659FE8 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				F31325F62C49C33E00659FE8 /* CartViewModelTests.swift */,
+				F31325F82C49C5BA00659FE8 /* MockCartViewController.swift */,
+				F31325FA2C49C81500659FE8 /* MockCartManager.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
 		F3BD69612C428B7600BB8EA6 = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +251,7 @@
 		F3BD69862C428B7800BB8EA6 /* EterationStudyCaseTests */ = {
 			isa = PBXGroup;
 			children = (
+				F31325F32C49C2FD00659FE8 /* Scenes */,
 				F3BD69872C428B7800BB8EA6 /* EterationStudyCaseTests.swift */,
 			);
 			path = EterationStudyCaseTests;
@@ -536,7 +569,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31325F92C49C5BA00659FE8 /* MockCartViewController.swift in Sources */,
+				F31325F72C49C33E00659FE8 /* CartViewModelTests.swift in Sources */,
 				F3BD69882C428B7800BB8EA6 /* EterationStudyCaseTests.swift in Sources */,
+				F31325FB2C49C81500659FE8 /* MockCartManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

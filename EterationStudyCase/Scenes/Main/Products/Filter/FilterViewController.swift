@@ -54,8 +54,10 @@ class FilterViewController: UIViewController, StoryboardLoadable {
 
 extension FilterViewController: FilterViewControllerProtocol {
     func reload() {
-        brandTableView.reloadData()
-        modelTableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.brandTableView.reloadData()
+            self?.modelTableView.reloadData()
+        }
     }
 }
 

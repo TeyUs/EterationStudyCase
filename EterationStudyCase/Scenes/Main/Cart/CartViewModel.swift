@@ -18,39 +18,37 @@ protocol CartViewModelProtocol: AnyObject {
 protocol CartViewControllerProtocol: AnyObject {
     func reload()
     func setTotalPrice(_ price: String)
-}
+} 
 
-class CartViewModel {
-    var cartProducts: [Product] = []
+final class CartViewModel {
+    private var cartProducts: [Product] = []
     
     lazy var cartManager: CartManagerProtocol = {
         return CartManager.shared
     }()
     
-    unowned var view: CartViewControllerProtocol
+    private unowned var view: CartViewControllerProtocol
     
     init(view: CartViewControllerProtocol) {
         self.view = view
     }
     
-    func getProductsOfCart() {
+    private func getProductsOfCart() {
         cartProducts = Array(cartManager.cartProducts)
     }
     
-    func saveProductsOfCart() {
+    private func saveProductsOfCart() {
         cartManager.saveToLocal()
     }
     
-    func getTotalPrice() {
+    private func getTotalPrice() {
         view.setTotalPrice("\(cartManager.totalPrice).00".tl)
     }
     
-    func dataUpdated() {
-        DispatchQueue.main.async { [weak self] in
-            self?.getProductsOfCart()
-            self?.getTotalPrice()
-            self?.view.reload()
-        }
+    private func dataUpdated() {
+        getProductsOfCart()
+        getTotalPrice()
+        view.reload()
     }
 }
 

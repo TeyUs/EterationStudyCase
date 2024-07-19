@@ -43,11 +43,15 @@ class CartViewController: UIViewController, StoryboardLoadable {
 
 extension CartViewController: CartViewControllerProtocol {
     func setTotalPrice(_ price: String) {
-        totalPriceLabel.text = price
+        DispatchQueue.main.async { [weak self] in
+            self?.totalPriceLabel.text = price
+        }
     }
     
     func reload() {
-        tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
 }
 

@@ -32,22 +32,33 @@ class ProductDetailViewController: UIViewController, StoryboardLoadable {
 
 extension ProductDetailViewController: ProductDetailViewProtocol {
     func setImage(_ text: String) {
-        if let url = URL(string: text) {
-            productImage.kf.setImage(with: url)
+        DispatchQueue.main.async { [weak self] in
+            if let url = URL(string: text) {
+                self?.productImage.kf.setImage(with: url)
+            }
         }
     }
     
+    @MainActor
     func setTitle(_ text: String) {
-        titleLabel.text = text
-        self.title = text
+        DispatchQueue.main.async { [weak self] in
+            self?.titleLabel.text = text
+            self?.title = text
+        }
     }
     
+    @MainActor
     func setDescription(_ text: String) {
-        descriptionLabel.text = text
+        DispatchQueue.main.async { [weak self] in
+            self?.descriptionLabel.text = text
+        }
     }
     
+    @MainActor
     func setPrice(_ text: String) {
-        priceLabel.text = text
+        DispatchQueue.main.async { [weak self] in
+            self?.priceLabel.text = text
+        }
     }
 }
 

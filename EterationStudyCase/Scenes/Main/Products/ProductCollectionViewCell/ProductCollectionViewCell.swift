@@ -30,6 +30,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func favButtonTapped(_ sender: Any) {
+        //TODO: favorite button feature will be added
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {
@@ -37,11 +38,13 @@ class ProductCollectionViewCell: UICollectionViewCell {
     }
     
     func setupUI(product: Product) {
-        self.product = product
-        priceLabel.text = product.price?.tl
-        nameLabel.text = product.name
-        if let url = URL(string: product.image!) {
-            productImage.kf.setImage(with: url)
+        DispatchQueue.main.async { [weak self] in
+            self?.product = product
+            self?.priceLabel.text = product.price?.tl
+            self?.nameLabel.text = product.name
+            if let url = URL(string: product.image!) {
+                self?.productImage.kf.setImage(with: url)
+            }
         }
     }
 }

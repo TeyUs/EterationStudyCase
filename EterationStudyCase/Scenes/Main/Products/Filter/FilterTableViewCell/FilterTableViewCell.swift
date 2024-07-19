@@ -23,7 +23,9 @@ class FilterTableViewCell: UITableViewCell {
     }
     
     func setUI(name: String, isChecked: Bool = false) {
-        self.isChecked = isChecked
-        nameLabel.text = name
+        DispatchQueue.main.async { [weak self] in
+            self?.isChecked = isChecked
+            self?.nameLabel.text = name
+        }
     }
 }
