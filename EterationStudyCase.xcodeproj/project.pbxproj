@@ -18,6 +18,10 @@
 		F31325F72C49C33E00659FE8 /* CartViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31325F62C49C33E00659FE8 /* CartViewModelTests.swift */; };
 		F31325F92C49C5BA00659FE8 /* MockCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31325F82C49C5BA00659FE8 /* MockCartViewController.swift */; };
 		F31325FB2C49C81500659FE8 /* MockCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31325FA2C49C81500659FE8 /* MockCartManager.swift */; };
+		F31325FE2C4A70F500659FE8 /* ProductsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31325FD2C4A70F500659FE8 /* ProductsViewModelTests.swift */; };
+		F31326002C4A716A00659FE8 /* MockProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31325FF2C4A716A00659FE8 /* MockProductsViewController.swift */; };
+		F31326022C4A71C600659FE8 /* MockFilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31326012C4A71C600659FE8 /* MockFilterManager.swift */; };
+		F31326042C4A734D00659FE8 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31326032C4A734D00659FE8 /* MockNetworkManager.swift */; };
 		F3BD696E2C428B7600BB8EA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BD696D2C428B7600BB8EA6 /* AppDelegate.swift */; };
 		F3BD69702C428B7600BB8EA6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BD696F2C428B7600BB8EA6 /* SceneDelegate.swift */; };
 		F3BD69782C428B7600BB8EA6 /* EterationStudyCase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3BD69762C428B7600BB8EA6 /* EterationStudyCase.xcdatamodeld */; };
@@ -82,6 +86,10 @@
 		F31325F62C49C33E00659FE8 /* CartViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModelTests.swift; sourceTree = "<group>"; };
 		F31325F82C49C5BA00659FE8 /* MockCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCartViewController.swift; sourceTree = "<group>"; };
 		F31325FA2C49C81500659FE8 /* MockCartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCartManager.swift; sourceTree = "<group>"; };
+		F31325FD2C4A70F500659FE8 /* ProductsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModelTests.swift; sourceTree = "<group>"; };
+		F31325FF2C4A716A00659FE8 /* MockProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductsViewController.swift; sourceTree = "<group>"; };
+		F31326012C4A71C600659FE8 /* MockFilterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFilterManager.swift; sourceTree = "<group>"; };
+		F31326032C4A734D00659FE8 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 		F3BD696A2C428B7600BB8EA6 /* EterationStudyCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EterationStudyCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3BD696D2C428B7600BB8EA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3BD696F2C428B7600BB8EA6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +202,7 @@
 		F31325F42C49C30500659FE8 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				F31325FC2C4A70C400659FE8 /* Products */,
 				F31325F52C49C31F00659FE8 /* Cart */,
 			);
 			path = Main;
@@ -207,6 +216,17 @@
 				F31325FA2C49C81500659FE8 /* MockCartManager.swift */,
 			);
 			path = Cart;
+			sourceTree = "<group>";
+		};
+		F31325FC2C4A70C400659FE8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F31325FD2C4A70F500659FE8 /* ProductsViewModelTests.swift */,
+				F31325FF2C4A716A00659FE8 /* MockProductsViewController.swift */,
+				F31326012C4A71C600659FE8 /* MockFilterManager.swift */,
+				F31326032C4A734D00659FE8 /* MockNetworkManager.swift */,
+			);
+			path = Products;
 			sourceTree = "<group>";
 		};
 		F3BD69612C428B7600BB8EA6 = {
@@ -569,9 +589,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31326002C4A716A00659FE8 /* MockProductsViewController.swift in Sources */,
 				F31325F92C49C5BA00659FE8 /* MockCartViewController.swift in Sources */,
+				F31326042C4A734D00659FE8 /* MockNetworkManager.swift in Sources */,
+				F31326022C4A71C600659FE8 /* MockFilterManager.swift in Sources */,
 				F31325F72C49C33E00659FE8 /* CartViewModelTests.swift in Sources */,
 				F3BD69882C428B7800BB8EA6 /* EterationStudyCaseTests.swift in Sources */,
+				F31325FE2C4A70F500659FE8 /* ProductsViewModelTests.swift in Sources */,
 				F31325FB2C49C81500659FE8 /* MockCartManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -65,6 +65,9 @@ extension CartViewModel: CartViewModelProtocol {
     
     func viewWillDisappear() {
         saveProductsOfCart()
+        cartManager.removeSubscriber { [weak self] in
+            self?.dataUpdated()
+        }
     }
     
     var itemsCount: Int {

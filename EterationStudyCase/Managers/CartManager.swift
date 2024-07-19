@@ -14,8 +14,9 @@ protocol CartManagerProtocol {
     func updateNumber(of product: Product, newNumber: Int)
     var totalPrice: Int { get }
     var cartProducts: Set<Product> { get }
-    func addSubscriber(proccess: @escaping Process)
     func addProductToCart(_ product: Product)
+    func addSubscriber(proccess: @escaping Process)
+    func removeSubscriber(proccess: @escaping Process)
 }
 
 typealias Process = ()->()

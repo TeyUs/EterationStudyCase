@@ -8,11 +8,11 @@
 import Foundation
 
 
-protocol NetworkService {
+protocol NetworkServiceProtocol {
     func get<T: Decodable>(urlString: String) async throws -> T
 }
 
-class NetworkManager: NetworkService {
+class NetworkManager: NetworkServiceProtocol {
     
     static let shared = NetworkManager()
     

@@ -21,16 +21,16 @@ protocol ProductsViewProtocol: AnyObject {
 }
 
 class ProductsViewModel {
-    let service: NetworkService
-    var allProducts: [Product] = []
-    var filteredProducts: [Product] = []
-    var searchedFilteredProducts: [Product] = [] {
+    private let service: NetworkServiceProtocol
+    private var allProducts: [Product] = []
+    private var filteredProducts: [Product] = []
+    private var searchedFilteredProducts: [Product] = [] {
         didSet {
             self.view.reload()
         }
     }
     
-    var searchText = ""
+    private var searchText = ""
     
     lazy var filterManager: FilterManagerProtocol = {
         return FilterManager.shared
@@ -38,12 +38,12 @@ class ProductsViewModel {
     
     unowned var view: ProductsViewProtocol
     
-    init(view: ProductsViewProtocol, networkService: NetworkService = NetworkManager.shared) {
+    init(view: ProductsViewProtocol, networkService: NetworkServiceProtocol = NetworkManager.shared) {
         self.view = view
         self.service = networkService
     }
     
-    func fetch() {
+    private func fetch() {
         Task {
             do {
                 let data: [Product] = try await service.get(urlString: "https://5fc9346b2af77700165ae514.mockapi.io/products")
@@ -55,7 +55,7 @@ class ProductsViewModel {
         }
     }
     
-    func filterData() {
+    private func filterData() {
         var filteringList = allProducts
         let filterManager = filterManager
         if !filterManager.brandSelected.isEmpty {
@@ -76,7 +76,7 @@ class ProductsViewModel {
         searchTextFilterData()
     }
     
-    func searchTextFilterData() {
+    private func searchTextFilterData() {
         if searchText.isEmpty {
             searchedFilteredProducts = filteredProducts
         } else {
