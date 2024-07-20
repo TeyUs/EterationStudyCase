@@ -22,7 +22,6 @@ extension StoryboardLoadable where Self: UIViewController {
     }
 }
 
-
 extension StoryboardLoadable where Self: UITabBarController {
     static func storyboardName() -> String {
         return String(describing: Self.self).replacingOccurrences(of: "TabBarController", with: "")
