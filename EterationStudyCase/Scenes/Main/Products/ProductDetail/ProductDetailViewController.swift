@@ -39,7 +39,6 @@ extension ProductDetailViewController: ProductDetailViewProtocol {
         }
     }
     
-    @MainActor
     func setTitle(_ text: String) {
         DispatchQueue.main.async { [weak self] in
             self?.titleLabel.text = text
@@ -47,14 +46,12 @@ extension ProductDetailViewController: ProductDetailViewProtocol {
         }
     }
     
-    @MainActor
     func setDescription(_ text: String) {
         DispatchQueue.main.async { [weak self] in
             self?.descriptionLabel.text = text
         }
     }
     
-    @MainActor
     func setPrice(_ text: String) {
         DispatchQueue.main.async { [weak self] in
             self?.priceLabel.text = text
