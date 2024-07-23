@@ -61,9 +61,9 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h3B-Hz-ovs">
-                                <rect key="frame" x="5" y="212" width="383" height="640"/>
+                                <rect key="frame" x="10" y="212" width="373" height="640"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jKv-mZ-Khr">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="jKv-mZ-Khr">
                                     <size key="itemSize" width="174" height="312"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -75,9 +75,9 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="h3B-Hz-ovs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="5" id="95V-fJ-KIL"/>
+                            <constraint firstItem="h3B-Hz-ovs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="95V-fJ-KIL"/>
                             <constraint firstItem="Tuv-4H-GeQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="G9g-Ah-bKs"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="h3B-Hz-ovs" secondAttribute="trailing" constant="5" id="PxS-JQ-hZd"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="h3B-Hz-ovs" secondAttribute="trailing" constant="10" id="PxS-JQ-hZd"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Tuv-4H-GeQ" secondAttribute="trailing" constant="16" id="iKe-49-F2w"/>
                             <constraint firstItem="Tuv-4H-GeQ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ihw-Uf-WZq"/>
                             <constraint firstAttribute="bottom" secondItem="h3B-Hz-ovs" secondAttribute="bottom" id="n3a-Bj-T00"/>

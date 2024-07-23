@@ -57,7 +57,7 @@ extension ProductsViewController: UISearchBarDelegate {
     }
 }
 
-extension ProductsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ProductsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel?.itemsCount ?? 0
     }
@@ -74,5 +74,9 @@ extension ProductsViewController: UICollectionViewDelegate, UICollectionViewData
         let view = UIStoryboard.loadViewController() as ProductDetailViewController
         view.viewModel = ProductDetailViewModel(view: view, model: model)
         self.show(view, sender: nil)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: view.frame.size.width * 0.5 - 20, height: 300)
     }
 }
